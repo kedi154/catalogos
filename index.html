@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cálamo Studio 3D — Catálogos</title>
+<meta name="description" content="Coleções de peças impressas em 3D pela Cálamo Studio 3D.">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hammersmith+One&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ════════ MARCA — ajuste as cores aqui se quiser ════════ */
+:root{
+  --navy:#0A2B4D;
+  --navy2:#0d365f;
+  --cream:#F6EEE6;
+  --cream2:#FFFFFF;
+  --ink:#2b2b2b;
+  --muted:#7d7264;
+  --gold:#e8b86d;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+
+/* ════════ CABEÇALHO ════════ */
+.topbar{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.topbar::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:46px;background:var(--cream);clip-path:ellipse(60% 100% at 50% 100%)}
+.topbar-inner{max-width:1080px;margin:0 auto;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:54px;height:54px;object-fit:contain}
+.brand-txt .name{font-family:'Hammersmith One',sans-serif;font-size:22px;letter-spacing:4px;line-height:1}
+.brand-txt .sub{font-size:8.5px;letter-spacing:6px;color:rgba(255,255,255,.6);margin-top:3px}
+.top-links{display:flex;gap:8px}
+.top-links a{display:flex;align-items:center;gap:6px;color:#fff;text-decoration:none;font-size:12px;font-weight:600;background:rgba(255,255,255,.1);padding:8px 14px;border-radius:20px;transition:background .2s}
+.top-links a:hover{background:rgba(255,255,255,.22)}
+
+/* ════════ HERO ════════ */
+.hero{max-width:1080px;margin:0 auto;padding:34px 28px 6px;text-align:center}
+.hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:5px;color:var(--gold);text-transform:uppercase}
+.hero h1{font-size:40px;font-weight:900;color:var(--navy);line-height:1.05;margin-top:6px}
+.hero .script{display:block;font-family:'Great Vibes',cursive;font-weight:400;font-size:52px;color:var(--muted);line-height:.8;margin-top:2px}
+.hero p{max-width:520px;margin:16px auto 0;color:var(--muted);font-size:14px;line-height:1.7}
+
+/* ════════ GRID DE CATÁLOGOS ════════ */
+.grid{max-width:1080px;margin:0 auto;padding:34px 28px 60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.card{background:var(--cream2);border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,.06);box-shadow:0 8px 30px rgba(10,43,77,.07);display:flex;flex-direction:column;position:relative;text-decoration:none;color:inherit;opacity:0;transform:translateY(16px);animation:rise .5s ease forwards;transition:transform .25s,box-shadow .25s}
+.card.live:hover{transform:translateY(-7px);box-shadow:0 22px 48px rgba(10,43,77,.16)}
+@keyframes rise{to{opacity:1;transform:none}}
+.card .accent{height:7px;background:var(--c,#999)}
+.card .body{padding:24px 22px 22px;flex:1;display:flex;flex-direction:column}
+.card .emoji{font-size:42px;line-height:1;margin-bottom:12px}
+.card h2{font-size:19px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.5px}
+.card .desc{font-size:13px;color:var(--muted);line-height:1.65;margin-top:8px;flex:1}
+.card .foot{display:flex;align-items:center;gap:8px;margin-top:18px}
+.card .go{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--c,#999);color:#fff;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:11px 0;border-radius:11px}
+.card .copy{width:42px;height:42px;flex-shrink:0;border:1px solid rgba(0,0,0,.12);background:transparent;border-radius:11px;cursor:pointer;font-size:16px;color:var(--muted);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.card .copy:hover{border-color:var(--c);color:var(--c)}
+.card.soon{opacity:.62}
+.card.soon .accent{background:#c9bfb2}
+.card.soon .go{background:#b9ad9e;cursor:default}
+.badge-soon{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.06);color:var(--muted);font-size:10px;font-weight:800;letter-spacing:1px;padding:4px 10px;border-radius:20px;text-transform:uppercase}
+
+/* ════════ RODAPÉ ════════ */
+.foot-brand{background:var(--navy);color:#fff;text-align:center;padding:30px 24px}
+.foot-brand .name{font-family:'Hammersmith One',sans-serif;font-size:18px;letter-spacing:3px}
+.foot-brand .sub{font-size:8px;letter-spacing:5px;color:rgba(255,255,255,.4);margin-top:3px}
+.foot-brand .tag{font-size:11px;color:rgba(255,255,255,.55);margin-top:12px}
+
+/* ════════ WHATSAPP FLUTUANTE ════════ */
+.wa{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(37,211,102,.4);z-index:50;animation:pulse 2.2s infinite}
+.wa svg{width:32px;height:32px;fill:#fff}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.toast{position:fixed;top:22px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:11px 22px;border-radius:24px;font-size:12px;font-weight:700;z-index:60;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(4px)}
+
+@media (max-width:560px){
+  .hero h1{font-size:32px}.hero .script{font-size:42px}
+  .brand-txt .name{font-size:18px}
+  .top-links a span{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <!-- Coloque seu arquivo "logo.png" na raiz do repositório. Some sozinho se não existir. -->
+      <img src="logo.png" alt="Cálamo Studio 3D" onerror="this.style.display='none'">
+      <div class="brand-txt">
+        <div class="name">CÁLAMO</div>
+        <div class="sub">STUDIO 3D</div>
+      </div>
+    </div>
+    <nav class="top-links">
+      <a id="ig" href="#" target="_blank"><span>Instagram</span>📸</a>
+      <a id="wa-top" href="#" target="_blank"><span>WhatsApp</span>💬</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Cálamo Studio 3D</div>
+  <h1>Nossos <span class="script">Catálogos</span></h1>
+  <p>Escolha uma coleção e explore peças impressas em 3D, feitas com carinho e prontas para personalizar.</p>
+</section>
+
+<main class="grid" id="grid"></main>
+
+<footer class="foot-brand">
+  <div class="name">CÁLAMO</div>
+  <div class="sub">STUDIO 3D</div>
+  <div class="tag">Design que encanta. Impressão que surpreende.</div>
+</footer>
+
+<a class="wa" id="wa-float" href="#" target="_blank" aria-label="Fale no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   CONFIGURAÇÃO — edite só este bloco
+   ══════════════════════════════════════════════════════ */
+
+// Seus contatos
+const CONTATO = {
+  whatsapp: "5511999999999",            // só números, com 55 na frente
+  instagram: "https://instagram.com/calamo.studio3d"
+};
+
+// Seus catálogos. Para adicionar um novo:
+//  1) exporte o catálogo pelo painel e coloque o arquivo em uma pasta (ex: namorados/index.html)
+//  2) acrescente um item aqui com "link" apontando para essa pasta e "ativo: true"
+const CATALOGOS = [
+  {
+    nome: "Mundo Sensorial",
+    desc: "Fidgets, texturas e estímulos impressos em 3D — para foco, calma e diversão.",
+    emoji: "🌀",
+    cor: "#ff4fb8",
+    link: "sensorial/",
+    ativo: true
+  },
+  {
+    nome: "Dia dos Namorados",
+    desc: "Presentes que ficam: luminárias, caixinhas e mimos personalizados.",
+    emoji: "💕",
+    cor: "#E63946",
+    link: "namorados/",
+    ativo: false
+  },
+  {
+    nome: "Cultura Geek",
+    desc: "Suportes, action figures e peças para os fãs de carteirinha.",
+    emoji: "👾",
+    cor: "#8b5cf6",
+    link: "geek/",
+    ativo: false
+  }
+];
+
+/* ══════════════════════════════════════════════════════
+   A partir daqui não precisa mexer
+   ══════════════════════════════════════════════════════ */
+document.getElementById('ig').href = CONTATO.instagram;
+document.getElementById('wa-top').href = 'https://wa.me/' + CONTATO.whatsapp;
+document.getElementById('wa-float').href = 'https://wa.me/' + CONTATO.whatsapp;
+
+const grid = document.getElementById('grid');
+
+CATALOGOS.forEach((cat, i) => {
+  const card = document.createElement(cat.ativo ? 'a' : 'div');
+  card.className = 'card ' + (cat.ativo ? 'live' : 'soon');
+  card.style.setProperty('--c', cat.cor);
+  card.style.animationDelay = (i * 0.08) + 's';
+  if (cat.ativo) { card.href = cat.link; }
+
+  const soonBadge = cat.ativo ? '' : '<div class="badge-soon">Em breve</div>';
+  const copyBtn = cat.ativo
+    ? `<button class="copy" title="Copiar link" aria-label="Copiar link" onclick="copiarLink(event, '${cat.link}')">🔗</button>`
+    : '';
+  const goTxt = cat.ativo ? 'Ver catálogo →' : 'Em breve';
+
+  card.innerHTML = `
+    ${soonBadge}
+    <div class="accent"></div>
+    <div class="body">
+      <div class="emoji">${cat.emoji}</div>
+      <h2>${cat.nome}</h2>
+      <div class="desc">${cat.desc}</div>
+      <div class="foot">
+        <span class="go">${goTxt}</span>
+        ${copyBtn}
+      </div>
+    </div>`;
+  grid.appendChild(card);
+});
+
+function copiarLink(e, path) {
+  e.preventDefault();
+  e.stopPropagation();
+  const url = new URL(path, location.href).href;
+  navigator.clipboard.writeText(url).then(() => mostrarToast('🔗 Link copiado!'))
+    .catch(() => mostrarToast(url));
+}
+
+let toastTimer;
+function mostrarToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+</script>
+</body>
+</html>
