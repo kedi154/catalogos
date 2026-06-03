@@ -45,6 +45,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink
 .card.live:hover{transform:translateY(-7px);box-shadow:0 22px 48px rgba(10,43,77,.16)}
 @keyframes rise{to{opacity:1;transform:none}}
 .card .accent{height:7px;background:var(--c,#999)}
+.card .cover{height:160px;background-size:cover;background-position:center;background-color:#ece3d8}
 .card .body{padding:24px 22px 22px;flex:1;display:flex;flex-direction:column}
 .card .emoji{font-size:42px;line-height:1;margin-bottom:12px}
 .card h2{font-size:19px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.5px}
@@ -139,7 +140,35 @@ const CATALOGOS = [
     emoji: "🌀",
     cor: "#ff4fb8",
     link: "sensorial/",
+    capa: "",            // foto de prévia, ex: "capas/sensorial.jpg" (deixe "" para usar o emoji)
     ativo: true
+  },
+  {
+    nome: "Home Décor",
+    desc: "Vasos, porta-trecos, luminárias e detalhes que dão personalidade à casa.",
+    emoji: "🪴",
+    cor: "#c1694f",
+    link: "home-decor/",
+    capa: "",
+    ativo: false
+  },
+  {
+    nome: "Dia dos Pais",
+    desc: "Presentes com a cara dele: do escritório à oficina, tudo personalizado.",
+    emoji: "👔",
+    cor: "#2980b9",
+    link: "dia-dos-pais/",
+    capa: "",
+    ativo: false
+  },
+  {
+    nome: "Chaveiros",
+    desc: "Chaveiros personalizados — nomes, formas e fandoms, do seu jeito.",
+    emoji: "🔑",
+    cor: "#0f9d8c",
+    link: "chaveiros/",
+    capa: "",
+    ativo: false
   },
   {
     nome: "Dia dos Namorados",
@@ -147,6 +176,7 @@ const CATALOGOS = [
     emoji: "💕",
     cor: "#E63946",
     link: "namorados/",
+    capa: "",
     ativo: false
   },
   {
@@ -155,6 +185,7 @@ const CATALOGOS = [
     emoji: "👾",
     cor: "#8b5cf6",
     link: "geek/",
+    capa: "",
     ativo: false
   }
 ];
@@ -180,12 +211,15 @@ CATALOGOS.forEach((cat, i) => {
     ? `<button class="copy" title="Copiar link" aria-label="Copiar link" onclick="copiarLink(event, '${cat.link}')">🔗</button>`
     : '';
   const goTxt = cat.ativo ? 'Ver catálogo →' : 'Em breve';
+  const coverHtml = cat.capa ? `<div class="cover" style="background-image:url('${cat.capa}')"></div>` : '';
+  const emojiHtml = cat.capa ? '' : `<div class="emoji">${cat.emoji}</div>`;
 
   card.innerHTML = `
     ${soonBadge}
     <div class="accent"></div>
+    ${coverHtml}
     <div class="body">
-      <div class="emoji">${cat.emoji}</div>
+      ${emojiHtml}
       <h2>${cat.nome}</h2>
       <div class="desc">${cat.desc}</div>
       <div class="foot">
