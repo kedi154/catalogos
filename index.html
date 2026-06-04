@@ -147,76 +147,29 @@ body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink
 
 <div class="toast" id="toast"></div>
 
+<!-- DADOS DA HOME (editados pelo Gerador → painel 🏠 Home). Não edite à mão. -->
+<script id="home-data" type="application/json">
+{"contato":{"whatsapp":"5562982416184","instagram":"https://www.instagram.com/calamo3d/"},"catalogos":[{"nome":"Mundo Sensorial","desc":"Fidgets, texturas e estímulos impressos em 3D — para foco, calma e diversão.","emoji":"🌀","cor":"#ff4fb8","link":"sensorial/","capa":"","ativo":true},{"nome":"Home Décor","desc":"Vasos, porta-trecos, luminárias e detalhes que dão personalidade à casa.","emoji":"🪴","cor":"#c1694f","link":"home-decor/","capa":"","ativo":false},{"nome":"Dia dos Pais","desc":"Presentes com a cara dele: do escritório à oficina, tudo personalizado.","emoji":"👔","cor":"#2980b9","link":"dia-dos-pais/","capa":"","ativo":false},{"nome":"Chaveiros","desc":"Chaveiros personalizados — nomes, formas e fandoms, do seu jeito.","emoji":"🔑","cor":"#0f9d8c","link":"chaveiros/","capa":"","ativo":true},{"nome":"Dia dos Namorados","desc":"Presentes que ficam: luminárias, caixinhas e mimos personalizados.","emoji":"💕","cor":"#E63946","link":"namorados/","capa":"","ativo":false},{"nome":"Cultura Geek","desc":"Suportes, action figures e peças para os fãs de carteirinha.","emoji":"👾","cor":"#8b5cf6","link":"geek/","capa":"","ativo":false}]}
+</script>
+
 <script>
 /* ══════════════════════════════════════════════════════
-   CONFIGURAÇÃO — edite só este bloco
+   Os dados vêm do bloco "home-data" acima (editado pelo Gerador).
+   Se faltar, usa os padrões abaixo como rede de segurança.
    ══════════════════════════════════════════════════════ */
-
-// Seus contatos
-const CONTATO = {
-  whatsapp: "5562982416184",            // só números, com 55 na frente
-  instagram: "https://www.instagram.com/calamo3d/"
+const DEFAULTS = {
+  contato: { whatsapp: "5562982416184", instagram: "https://www.instagram.com/calamo3d/" },
+  catalogos: [
+    { nome: "Mundo Sensorial", desc: "Fidgets, texturas e estímulos impressos em 3D — para foco, calma e diversão.", emoji: "🌀", cor: "#ff4fb8", link: "sensorial/", capa: "", ativo: true }
+  ]
 };
-
-// Seus catálogos. Para adicionar um novo:
-//  1) exporte o catálogo pelo painel e coloque o arquivo em uma pasta (ex: namorados/index.html)
-//  2) acrescente um item aqui com "link" apontando para essa pasta e "ativo: true"
-const CATALOGOS = [
-  {
-    nome: "Mundo Sensorial",
-    desc: "Fidgets, texturas e estímulos impressos em 3D — para foco, calma e diversão.",
-    emoji: "🌀",
-    cor: "#ff4fb8",
-    link: "sensorial/",
-    capa: "",            // foto de prévia, ex: "capas/sensorial.jpg" (deixe "" para usar o emoji)
-    ativo: true
-  },
-  {
-    nome: "Home Décor",
-    desc: "Vasos, porta-trecos, luminárias e detalhes que dão personalidade à casa.",
-    emoji: "🪴",
-    cor: "#c1694f",
-    link: "home-decor/",
-    capa: "",
-    ativo: false
-  },
-  {
-    nome: "Dia dos Pais",
-    desc: "Presentes com a cara dele: do escritório à oficina, tudo personalizado.",
-    emoji: "👔",
-    cor: "#2980b9",
-    link: "dia-dos-pais/",
-    capa: "",
-    ativo: false
-  },
-  {
-    nome: "Chaveiros",
-    desc: "Chaveiros personalizados — nomes, formas e fandoms, do seu jeito.",
-    emoji: "🔑",
-    cor: "#0f9d8c",
-    link: "chaveiros/",
-    capa: "",
-    ativo: false
-  },
-  {
-    nome: "Dia dos Namorados",
-    desc: "Presentes que ficam: luminárias, caixinhas e mimos personalizados.",
-    emoji: "💕",
-    cor: "#E63946",
-    link: "namorados/",
-    capa: "",
-    ativo: false
-  },
-  {
-    nome: "Cultura Geek",
-    desc: "Suportes, action figures e peças para os fãs de carteirinha.",
-    emoji: "👾",
-    cor: "#8b5cf6",
-    link: "geek/",
-    capa: "",
-    ativo: false
-  }
-];
+let HOME = DEFAULTS;
+try {
+  const _el = document.getElementById('home-data');
+  if (_el && _el.textContent.trim()) { const _d = JSON.parse(_el.textContent); if (_d && Array.isArray(_d.catalogos)) HOME = _d; }
+} catch (e) { /* mantém DEFAULTS */ }
+const CONTATO = HOME.contato || DEFAULTS.contato;
+const CATALOGOS = HOME.catalogos || DEFAULTS.catalogos;
 
 /* ══════════════════════════════════════════════════════
    A partir daqui não precisa mexer
